@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Register</title>
+	</head>
+
+	<body>
+
+		<h1>Sign up for Bump</h1>
+		<h2>Find the tutors closest to you.</h2>
+
+		<ul>
+		{% for error in errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+		</ul>
+
+		<form method="post" action="/u/process/">
+			{% csrf_token %}
+
+			<input id="id_username" name="username" placeholder="Email"><br>
+			<input id="id_first" name="first" placeholder="First"><br>
+			<input id="id_last" name="last" placeholder="Last"><br>
+			<input id="id_phone" name="phone" placeholder="Phone"><br>
+			<input id="id_password1" name="password1" type="password" placeholder="Password"><br>
+			<input id="id_password1" name="password2" type="password" placeholder="Retype Password"><br>
+			<select id="id_school" name="school" placeholder="School">
+			{% for school in schools %}
+			<option value="{{ school.id }}" name="school">{{ school.school }}</option>
+			{% endfor %}
+			</select><br>
+			<input type="submit" name="submit" value="Submit" />
+
+		</form>
+	</body>
+
+</html>

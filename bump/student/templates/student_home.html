@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{{ user.first_name }}'s Profile</title>
+	</head>
+
+	<body>
+		<h1>Classes</h1>
+		<h2>{{ school }}</h2>
+
+
+		<h3>Active Classes</h3>
+
+		<form method="post" action="/calls/">
+			{% csrf_token %}
+
+			{% for class in active_classes %}
+			{{ class.department }} {{ class.number }} {{ class.title }}
+			<input type="radio" name="class" value="{{class.id}}"><br>
+
+			<br>
+			{% endfor %}
+			<input type="submit" name="submit" value="Choose this Class" />
+
+		</form>
+
+		<h3>All Classes</h3>
+		{% for class in classes %}
+		{{ class.department }} {{ class.number }} {{ class.title }}<br>
+		{% endfor %}
+
+	</body>
+
+</html>

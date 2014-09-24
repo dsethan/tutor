@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Dashboard</title>
+	</head>
+
+
+	<body>
+		<h1>Add classes for {{user_to_add.first_name}} {{user_to_add.last_name}}</h1>
+
+
+			<form method="post" action="/dashboard/class_process">
+			{% csrf_token %}
+
+			{% for num in nums %}
+			<input id="id_department_{{num}}" name="department_{{num}}" placeholder="Department"><br>
+			<input id="id_class_{{num}}" name="class_{{num}}" placeholder="Class"><br>
+			<input id="id_number_{{num}}" name="number_{{num}}" placeholder="Number"><br>
+			{% endfor %}
+			<input type="hidden" name="total" value="{{total}}">
+			<input type="hidden" name="user_to_add_id" value="{{user_to_add_id}}">
+
+
+			<input type="submit" name="submit" value="Submit" />
+
+
+			</form>
+
+
+	</body>
+
+</html>
