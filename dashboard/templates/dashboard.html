@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Dashboard</title>
+	</head>
+
+
+	<body>
+		<h1>Add a Tutor</h1>
+
+
+			<form method="post" action="/dashboard/process/">
+			{% csrf_token %}
+
+			<input id="id_username" name="username" placeholder="Email"><br>
+			<input id="id_first" name="first" placeholder="First"><br>
+			<input id="id_last" name="last" placeholder="Last"><br>
+			<input id="id_phone" name="phone" placeholder="Phone"><br>
+			<input id="id_password1" name="password1" type="password" placeholder="Password"><br>
+			<input id="id_password1" name="password2" type="password" placeholder="Retype Password"><br>
+			<select id="id_school" name="school" placeholder="School">
+			{% for school in schools %}
+			<option value="{{ school.id }}" name="school">{{ school.school }}</option>
+			{% endfor %}
+			</select><br>
+			Number of classes to add:
+
+			<select id="id_number" name="number" placeholder="Number of classes">
+			{% for i in nums%}
+			<option value="{{i}}" name="number">{{i}}</option>
+			{% endfor %}
+			</select></br>
+
+			<input type="submit" name="submit" value="Submit" />
+
+			</form>
+
+
+	</body>
+
+</html>
